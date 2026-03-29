@@ -114,9 +114,13 @@ export default function CartDrawer() {
               <span>${totalPrice.toFixed(2)}</span>
             </div>
 
-            <button className="w-full rounded-full bg-black px-6 py-4 text-sm font-semibold uppercase tracking-wide text-white transition hover:opacity-85">
-              Checkout
-            </button>
+<Link
+  href="/checkout"
+  onClick={closeCart}
+  className="block w-full rounded-full bg-black px-6 py-4 text-center text-sm font-semibold uppercase tracking-wide text-white transition hover:opacity-85"
+>
+  Checkout
+</Link>
           </div>
         </div>
       </aside>
