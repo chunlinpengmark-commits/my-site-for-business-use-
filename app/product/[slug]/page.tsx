@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useCart } from "@/context/CartContext";
@@ -45,12 +45,13 @@ type ProductSlug = keyof typeof products;
 export default function ProductPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const [qty, setQty] = useState(1);
   const { addToCart } = useCart();
+  const resolvedParams = use(params);
 
-  const product = products[params.slug as ProductSlug];
+  const product = products[resolvedParams.slug as ProductSlug];
 
   if (!product) {
     notFound();
@@ -81,9 +82,7 @@ export default function ProductPage({
         <div>
           <h1 className="text-5xl font-black">{product.name}</h1>
 
-          <h2 className="mt-4 text-2xl text-gray-700">
-            {product.subtitle}
-          </h2>
+          <h2 className="mt-4 text-2xl text-gray-700">{product.subtitle}</h2>
 
           <p className="mt-6 text-3xl font-semibold">
             ${product.price.toFixed(2)}
@@ -106,16 +105,14 @@ export default function ProductPage({
               +
             </button>
 
-            <span className="text-gray-500">
-              {product.stock} in stock
-            </span>
+            <span className="text-gray-500">{product.stock} in stock</span>
           </div>
 
           <button
             onClick={() =>
               addToCart(
                 {
-                  slug: params.slug,
+                  slug: resolvedParams.slug,
                   name: product.name,
                   price: product.price,
                 },
@@ -127,9 +124,7 @@ export default function ProductPage({
             Add to cart
           </button>
 
-          <p className="mt-10 text-gray-600">
-            {product.description}
-          </p>
+          <p className="mt-10 text-gray-600">{product.description}</p>
         </div>
       </div>
     </main>
