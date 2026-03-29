@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 const products = {
   "bpc-157": {
@@ -47,6 +48,7 @@ export default function ProductPage({
   params: { slug: string };
 }) {
   const [qty, setQty] = useState(1);
+  const { addToCart } = useCart();
 
   const product = products[params.slug as ProductSlug];
 
@@ -56,34 +58,37 @@ export default function ProductPage({
 
   return (
     <main className="min-h-screen bg-white text-black">
-      {/* Breadcrumb */}
       <div className="border-b border-black/10 px-6 py-6">
         <p className="text-sm text-gray-500">
-          <Link href="/">Home</Link> /{" "}
-          <Link href="/shop">Shop</Link> / {product.name}
+          <Link href="/" className="hover:text-black">
+            Home
+          </Link>{" "}
+          /{" "}
+          <Link href="/shop" className="hover:text-black">
+            Shop
+          </Link>{" "}
+          / <span className="text-black">{product.name}</span>
         </p>
       </div>
 
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-14 lg:grid-cols-2">
-        {/* Image */}
         <div className="rounded-3xl bg-gray-100 p-6">
           <div className="flex h-[500px] items-center justify-center text-gray-400">
             Product Image
           </div>
         </div>
 
-        {/* Info */}
         <div>
           <h1 className="text-5xl font-black">{product.name}</h1>
+
           <h2 className="mt-4 text-2xl text-gray-700">
             {product.subtitle}
           </h2>
 
           <p className="mt-6 text-3xl font-semibold">
-            ${product.price}
+            ${product.price.toFixed(2)}
           </p>
 
-          {/* Qty */}
           <div className="mt-6 flex items-center gap-4">
             <button
               onClick={() => setQty(Math.max(1, qty - 1))}
@@ -106,7 +111,19 @@ export default function ProductPage({
             </span>
           </div>
 
-          <button className="mt-6 rounded-full bg-black px-8 py-4 text-white">
+          <button
+            onClick={() =>
+              addToCart(
+                {
+                  slug: params.slug,
+                  name: product.name,
+                  price: product.price,
+                },
+                qty
+              )
+            }
+            className="mt-6 rounded-full bg-black px-8 py-4 text-white transition hover:opacity-85"
+          >
             Add to cart
           </button>
 

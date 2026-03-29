@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CartProvider } from "@/context/CartContext";
+import CartDrawer from "@/components/CartDrawer";
 
 export const metadata: Metadata = {
   title: "Research Use Peptides | YourBrand Research Labs",
   description:
-    "YourBrand Research Labs provides a premium digital experience centered around research use peptides, high-purity standards, and modern scientific brand presentation.",
+    "YourBrand Research Labs provides a premium digital experience centered around research use peptides.",
 };
 
 export default function RootLayout({
@@ -14,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <CartProvider>
+          {children}
+          <CartDrawer />
+        </CartProvider>
+      </body>
     </html>
   );
 }
