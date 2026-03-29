@@ -1,65 +1,220 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-white text-[#111111]">
+      {/* Top bar */}
+      <div className="border-b border-[#e9eeee] bg-[#f7fbfb]">
+        <div className="mx-auto max-w-7xl px-6 py-3 text-center text-sm font-semibold tracking-[0.16em] text-[#27bfc1] uppercase lg:px-10">
+          Research Use Peptides • High Purity • Quality Focused
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+
+      {/* Header */}
+      <header className="border-b border-[#ececec] bg-white">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
+          <div className="leading-none">
+            <Link href="/" className="inline-block">
+              <div className="text-[42px] font-black tracking-[-0.04em]">
+                YourBrand
+              </div>
+              <div className="mt-1 text-sm lowercase tracking-wide text-gray-500">
+                research labs
+              </div>
+            </Link>
+          </div>
+
+          <div className="hidden items-center gap-10 text-[15px] md:flex">
+            <Link href="/" className="transition hover:text-gray-500">
+              Home
+            </Link>
+            <Link href="/shop" className="transition hover:text-gray-500">
+              Shop
+            </Link>
+            <a href="#about" className="transition hover:text-gray-500">
+              About
+            </a>
+            <a href="#contact" className="transition hover:text-gray-500">
+              Contact
+            </a>
+            <a href="#policy" className="transition hover:text-gray-500">
+              Terms
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-[#f3f4f4]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.85),rgba(255,255,255,0.18),transparent_50%)]" />
+
+        <div className="mx-auto grid min-h-[78vh] max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10">
+          <div className="relative z-10 max-w-2xl">
+            <p className="mb-6 text-sm uppercase tracking-[0.28em] text-gray-500">
+              Research Use Peptides
+            </p>
+
+            <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.05em] md:text-7xl">
+              Premium peptides for research-focused applications
+            </h1>
+
+            <p className="mt-8 max-w-xl text-lg leading-8 text-gray-600">
+              A refined brand experience built around research use peptides,
+              high-purity standards, and clear scientific positioning.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                href="/shop"
+                className="rounded-full bg-white px-8 py-4 text-sm font-semibold uppercase tracking-wide text-black shadow-sm ring-1 ring-black/10 transition hover:bg-black hover:text-white"
+              >
+                View Shop
+              </Link>
+
+              <a
+                href="#about"
+                className="rounded-full border border-black px-8 py-4 text-sm font-semibold uppercase tracking-wide transition hover:bg-black hover:text-white"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
+
+          <div className="relative z-10">
+            <div className="relative h-[560px] overflow-hidden rounded-[32px] bg-[linear-gradient(180deg,#dfe4e7_0%,#cfd6da_100%)] shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.7),transparent_25%),linear-gradient(to_bottom,rgba(255,255,255,0.15),rgba(0,0,0,0.04))]" />
+
+              <div className="absolute bottom-10 left-8 h-36 w-36 rounded-full border border-white/50 bg-white/25 backdrop-blur-sm" />
+              <div className="absolute bottom-24 left-32 h-48 w-28 rounded-t-[999px] rounded-b-[28px] border border-white/50 bg-white/30 backdrop-blur-sm" />
+              <div className="absolute bottom-10 right-10 h-32 w-32 rounded-t-[999px] rounded-b-[28px] border border-white/50 bg-white/20 backdrop-blur-sm" />
+              <div className="absolute right-28 top-20 h-40 w-24 rounded-t-[999px] rounded-b-[26px] border border-white/40 bg-white/20 backdrop-blur-sm" />
+
+              <div className="absolute left-8 top-8 rounded-full bg-white/70 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-gray-700">
+                Research Use Only
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Value strip */}
+      <section className="border-y border-[#ececec] bg-[#fbfbfb]">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-14 md:grid-cols-3 lg:px-10">
+          <div>
+            <h2 className="mb-3 text-lg font-semibold">Research Use Focus</h2>
+            <p className="text-sm leading-7 text-gray-600">
+              Our homepage positioning is centered on research use peptides and
+              a professional laboratory-oriented brand presentation.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="mb-3 text-lg font-semibold">High-Purity Standards</h2>
+            <p className="text-sm leading-7 text-gray-600">
+              Clean messaging, premium visual structure, and consistent product
+              presentation designed to support trust and credibility.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="mb-3 text-lg font-semibold">Modern Brand Identity</h2>
+            <p className="text-sm leading-7 text-gray-600">
+              Minimal layouts, thoughtful spacing, and research-focused wording
+              that feels elevated instead of aggressive or salesy.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+        <div className="grid gap-16 lg:grid-cols-[1fr_1.15fr]">
+          <div>
+            <p className="mb-4 text-sm uppercase tracking-[0.28em] text-gray-500">
+              About
+            </p>
+            <h2 className="max-w-md text-4xl font-semibold tracking-[-0.04em] md:text-5xl">
+              A modern brand for research use peptides
+            </h2>
+          </div>
+
+          <div className="space-y-6 text-gray-600">
+            <p className="text-lg leading-8">
+              Our company is focused on presenting research use peptides through
+              a refined, credible, and professional brand experience.
+            </p>
+
+            <p className="leading-8">
+              The homepage is intentionally designed to introduce the brand,
+              communicate quality standards, and support SEO around research use
+              peptides without pushing direct purchase language.
+            </p>
+
+            <p className="leading-8">
+              The shop page is where products and pricing are displayed in a
+              cleaner catalog structure, allowing the homepage to remain brand
+              led and informational.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Statement section */}
+      <section className="bg-[linear-gradient(180deg,#8c979d_0%,#7f8b91_100%)] text-white">
+        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10">
+          <div>
+            <p className="mb-4 text-sm uppercase tracking-[0.28em] text-white/70">
+              Brand Positioning
+            </p>
+            <h2 className="max-w-xl text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
+              Built for clarity, professionalism, and research-first messaging
+            </h2>
+          </div>
+
+          <div className="text-lg leading-9 text-white/90">
+            We focus on clean presentation, restrained visual language, and
+            carefully structured communication around research use peptides for
+            a more premium and trustworthy digital presence.
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer id="contact" className="border-t bg-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 md:grid-cols-2 lg:px-10">
+          <div>
+            <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
+
+            <div className="space-y-3 text-sm text-gray-600">
+              <a
+                href="tel:9083768993"
+                className="block underline-offset-4 transition hover:text-black hover:underline"
+              >
+                Call us: 908-376-8993
+              </a>
+
+              <a
+                href="mailto:info@notbad.com"
+                className="block underline-offset-4 transition hover:text-black hover:underline"
+              >
+                Email us: info@notbad.com
+              </a>
+            </div>
+          </div>
+
+          <div id="policy">
+            <p className="text-sm leading-7 text-gray-600">
+              All products sold on this website are intended for research and
+              identification purposes only. These products are not intended for
+              human dosing, injection, or ingestion.
+            </p>
+          </div>
+        </div>
+
+        <div className="pb-6 text-center text-xs text-gray-400">
+          © 2026 YourBrand. All rights reserved.
+        </div>
+      </footer>
+    </main>
   );
 }
