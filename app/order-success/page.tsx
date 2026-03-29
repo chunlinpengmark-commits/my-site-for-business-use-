@@ -30,16 +30,6 @@ export default function OrderSuccessPage() {
             processing.
           </p>
 
-          <div className="mt-10 rounded-[24px] bg-[#f6f6f7] p-6 text-left">
-            <h2 className="text-lg font-semibold">What happens next</h2>
-
-            <div className="mt-4 space-y-3 text-gray-600">
-              <p>• A confirmation flow can be connected here later.</p>
-              <p>• Live payment integration can be added in the next phase.</p>
-              <p>• Order management and email notification can also be added.</p>
-            </div>
-          </div>
-
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               href="/shop"

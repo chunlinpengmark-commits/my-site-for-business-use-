@@ -6,8 +6,8 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function CheckoutPage() {
-const { items, totalPrice, clearCart } = useCart();
-const router = useRouter();
+  const { items, totalPrice, clearCart } = useCart();
+  const router = useRouter();
 
   const [form, setForm] = useState({
     firstName: "",
@@ -33,12 +33,11 @@ const router = useRouter();
     }));
   };
 
-const handlePlaceOrder = (e: React.FormEvent) => {
-  e.preventDefault();
-
-  clearCart();
-  router.push("/order-success");
-};
+  const handlePlaceOrder = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    clearCart();
+    router.push("/order-success");
+  };
 
   return (
     <main className="min-h-screen bg-[#fafafa] text-black">
@@ -154,13 +153,13 @@ const handlePlaceOrder = (e: React.FormEvent) => {
               </div>
             </div>
 
-<button
-  type="submit"
-  disabled={items.length === 0}
-  className="rounded-full bg-black px-8 py-4 text-sm font-semibold uppercase tracking-wide text-white transition hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-40"
->
-  Place Order
-</button>
+            <button
+              type="submit"
+              disabled={items.length === 0}
+              className="rounded-full bg-black px-8 py-4 text-sm font-semibold uppercase tracking-wide text-white transition hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              Place Order
+            </button>
           </form>
         </section>
 
