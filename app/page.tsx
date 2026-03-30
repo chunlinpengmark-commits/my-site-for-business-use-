@@ -179,42 +179,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer id="contact" className="border-t bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 md:grid-cols-2 lg:px-10">
-          <div>
-            <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
 
-            <div className="space-y-3 text-sm text-gray-600">
-              <a
-                href="tel:9083768993"
-                className="block underline-offset-4 transition hover:text-black hover:underline"
-              >
-                Call us: 908-376-8993
-              </a>
-
-              <a
-                href="mailto:info@notbad.com"
-                className="block underline-offset-4 transition hover:text-black hover:underline"
-              >
-                Email us: info@notbad.com
-              </a>
-            </div>
-          </div>
-
-          <div id="policy">
-            <p className="text-sm leading-7 text-gray-600">
-              All products sold on this website are intended for research and
-              identification purposes only. These products are not intended for
-              human dosing, injection, or ingestion.
-            </p>
-          </div>
-        </div>
-
-        <div className="pb-6 text-center text-xs text-gray-400">
-          © 2026 YourBrand. All rights reserved.
-        </div>
-      </footer>
     </main>
   );
 }

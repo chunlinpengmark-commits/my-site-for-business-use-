@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
+import Footer from "@/app/components/Footer";
 
 export const metadata: Metadata = {
   title: "Research Use Peptides | YourBrand Research Labs",
@@ -18,7 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CartProvider>
-          {children}
+          <div className="flex min-h-screen flex-col">
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </div>
           <CartDrawer />
         </CartProvider>
       </body>
