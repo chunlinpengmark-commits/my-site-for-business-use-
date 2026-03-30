@@ -24,23 +24,24 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="hidden items-center gap-10 text-[15px] md:flex">
-            <Link href="/" className="transition hover:text-gray-500">
-              Home
-            </Link>
-            <Link href="/shop" className="transition hover:text-gray-500">
-              Shop
-            </Link>
-            <a href="#about" className="transition hover:text-gray-500">
-              About
-            </a>
-            <a href="#contact" className="transition hover:text-gray-500">
-              Contact
-            </a>
-            <a href="#policy" className="transition hover:text-gray-500">
-              Terms
-            </a>
-          </div>
+<div className="hidden items-center gap-10 text-[15px] md:flex">
+  <Link href="/" className="transition hover:text-gray-500">
+    Home
+  </Link>
+  <Link href="/shop" className="transition hover:text-gray-500">
+    Shop
+  </Link>
+  <a href="#about" className="transition hover:text-gray-500">
+    About
+  </a>
+<Link href="/contact">Contact</Link>
+  <Link href="/faq" className="transition hover:text-gray-500">
+    FAQ
+  </Link>
+  <Link href="/terms" className="transition hover:text-gray-500">
+    Terms
+  </Link>
+</div>
         </nav>
       </header>
 
