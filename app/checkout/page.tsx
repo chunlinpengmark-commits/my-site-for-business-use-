@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 export default function CheckoutPage() {
   const { items, totalPrice, clearCart } = useCart();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const [sameAsShipping, setSameAsShipping] = useState(true);
 
@@ -50,16 +51,16 @@ export default function CheckoutPage() {
     }));
   };
 
-const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
-
-  // 模拟 loading
-  console.log("Creating payment session...");
+  setLoading(true);
 
   try {
-    // 👉 这里未来接 Stripe
-    const res = await fetch("/api/checkout", {
+ const res = await fetch("/api/checkout", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         items,
         form,
@@ -68,15 +69,20 @@ const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
 
     const data = await res.json();
 
-    // 👉 未来 Stripe 会返回支付链接
-    if (data.url) {
-      window.location.href = data.url;
-    }
+    clearCart();
 
-  } catch (err) {
+    if (data.url) {
+      router.push(data.url);
+    }
+} catch (err) {
     console.error("Checkout error:", err);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
   }
 };
+
+
 
   return (
     <main className="min-h-screen bg-[#f7f7f8] text-black">
@@ -314,13 +320,13 @@ const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={items.length === 0}
-              className="rounded-full bg-black px-10 py-4 text-sm font-semibold uppercase tracking-wide text-white transition hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-40"
-            >
-              Place Order
-            </button>
+<button
+  type="submit"
+  disabled={loading || items.length === 0}
+  className="rounded-full bg-black px-10 py-4 text-sm font-semibold uppercase tracking-wide text-white transition hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-40"
+>
+  {loading ? "Processing..." : "Place Order"}
+</button>
           </form>
         </section>
 
