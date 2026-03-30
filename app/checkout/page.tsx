@@ -50,12 +50,33 @@ export default function CheckoutPage() {
     }));
   };
 
-  const handlePlaceOrder = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+const handlePlaceOrder = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-    clearCart();
-    router.push("/order-success");
-  };
+  // 模拟 loading
+  console.log("Creating payment session...");
+
+  try {
+    // 👉 这里未来接 Stripe
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      body: JSON.stringify({
+        items,
+        form,
+      }),
+    });
+
+    const data = await res.json();
+
+    // 👉 未来 Stripe 会返回支付链接
+    if (data.url) {
+      window.location.href = data.url;
+    }
+
+  } catch (err) {
+    console.error("Checkout error:", err);
+  }
+};
 
   return (
     <main className="min-h-screen bg-[#f7f7f8] text-black">
